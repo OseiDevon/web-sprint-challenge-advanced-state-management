@@ -20,7 +20,22 @@ import Smurf from './Smurf';
     </div>);
 }
 
-export default SmurfList;
+return (
+    <div className="listContainer">
+      {props.smurfArr.map((smurf) => (
+        <Smurf smurf={smurf} key={smurf.id} />
+      ))}
+    </div>
+  );
+
+  const mapStateToProps = (state) => {
+    return {
+      smurfArr: state.smurfArr,
+      isLoading: state.isLoading,
+    };
+  };
+
+  export default connect(mapStateToProps, {})(SmurfList);
 
 //Task List:
 //1. Connect the smurfs and loading state values to the SmurfList component.
